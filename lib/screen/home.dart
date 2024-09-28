@@ -13,11 +13,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //List<dynamic> users = [];
   List<User> users = [];
+  Map<String, int> scores = {'Alice': 95, 'Bob': 85};
 
   @override
   void initState() {
     super.initState();
     fetchUsers();
+  }
+
+  void la(String name){
+    print(name);
   }
 
   @override
@@ -34,13 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
             final name = user.fullName;
             final imageUrl = user.picture.thumbnail;
             final color = user.gender == 'male' ? Colors.blue: Colors.pink;
+            // scores.forEach((key, value) => print('$key: $value'),);
+            //print(scores['Bob']);
             // final email = user['email'];
             // final name = user['name']['first'];
             // final imageUrl = user['picture']['thumbnail'];
+            la("uciii");
             return ListTile(
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Image.network(imageUrl),
+                child: Image.network(imageUrl, fit: BoxFit.cover,),
               ),
               title: Text(name),
               subtitle: Text(user.dob.date.toString()),

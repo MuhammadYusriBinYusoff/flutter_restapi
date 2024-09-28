@@ -14,7 +14,8 @@ class UserAPI{
     final response = await http.get(uri);
     final body = response.body;
     final json = jsonDecode(body);
-    final results = json['results'] as List<dynamic>;
+    List<dynamic> results = json['results'];
+    // List<Map<String,dynamic>> results = List<Map<String, dynamic>>.from(json['results']); //kalau restAPI dia boleh wajib using from kalu guna this way
     final transformed = results.map((e) {
       final name = UserName(title: e['name']['title'], first: e['name']['first'], last: e['name']['last']);
       final pic = PictureUrl(large: e['picture']['large'], medium: e['picture']['medium'], thumbnail: e['picture']['thumbnail']);
